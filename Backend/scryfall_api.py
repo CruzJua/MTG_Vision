@@ -39,7 +39,7 @@ async def get_card_data(card_name: str):
     
     async with httpx.AsyncClient() as client:
         response = await client.get(url, headers=headers)
-        return response.json()
+        return json.load(response)
 
 
 async def get_image_by_name(
@@ -58,14 +58,14 @@ async def autocomplete(text: str):
     
     async with httpx.AsyncClient() as client:
         response = await client.get(url, headers=headers)
-        return response.json()
+        return json.load(response)
 
 async def get_card_by_id(id: str):
     url = f"{url_base}cards/{id}"
     
     async with httpx.AsyncClient() as client:
         response = await client.get(url, headers=headers)
-        return response.json()
+        return json.load(response)
 
 
 if __name__ == "__main__":
